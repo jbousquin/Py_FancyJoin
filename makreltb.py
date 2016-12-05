@@ -24,6 +24,13 @@ import csv
 from time import localtime, strftime
 from arcpy import da
 
+""" Delete if exists
+Purpose: if a file exists it is deleted and noted in a message message"""
+def del_exists(item):
+    if arcpy.Exists(item):
+        arcpy.Delete_management(item)
+        arcpy.AddMessage(str(item) + " already exists, it was deleted and will be replaced.") 
+
 # Local variable definitions
 #merged result table
 capemrgd = "D:\\Projects\\mazzotta\\capecod3\\capecod3.gdb\\Cape_Cod_Merged2"
